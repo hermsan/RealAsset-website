@@ -705,8 +705,8 @@ The first fully decentralised and permissionless L1 Blockchain.<br>that offers n
 
 <div class="game-card">
     <h2>Real Mario Game</h2>
-    <img src="game2-thumb.jpg" class="game-thumb" onclick="openGamePage('game2/index.html')">
-    <button class="play-btn" onclick="openGamePage('game2/index.html')">PLAY</button>
+    <img src="game2-thumb.jpg" class="game-thumb" onclick="window.open('https://hermsan.itch.io/realmariogame', '_blank')">
+    <button class="play-btn" onclick="window.open('https://hermsan.itch.io/realmariogame', '_blank')">PLAY</button>
 </div>
 </div>
 </section>
@@ -928,7 +928,7 @@ function animateSpace() {
             coin.y = -60;
             coin.x = Math.random() * canvas.width;
             coin.speedY = 0.8 + Math.random() * 1.8;
-            coin.img = coinImages[Math.floor(Math.random() * coinImages.length)];
+            coin.img = coinImages[Math.floor(Math.floor(Math.random() * coinImages.length))];
         }
 
         if (coin.x < -50 || coin.x > canvas.width + 50) {
