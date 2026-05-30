@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RealFinOfficial WEBSITE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Fredoka',sans-serif;
+overflow-x:hidden;
+background:#0b0d19; /* Warna dasar luar angkasa gelap */
+color:white;
+position: relative;
+}
+
+/* KANVAS UNTUK BACKGROUND ANIMASI */
+#space-bg {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -1; /* Berada di paling belakang */
+pointer-events: none;
+}
+
+/* ELEMEN PLANET BACKGROUND BERPUTAR */
+.bg-planet {
+position: fixed;
+top: 25%;
+right: -100px;
+width: 350px;
+height: 350px;
+background: radial-gradient(circle at 30% 30%, #4f46e5, #1e1b4b, #090514);
+border-radius: 50%;
+z-index: -1;
+box-shadow: 0 0 60px rgba(79, 70, 229, 0.4);
+animation: rotatePlanet 40s linear infinite;
+pointer-events: none;
+}
+
+/* Cincin Planet */
+.bg-planet::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+width: 500px;
+height: 40px;
+border: 15px solid rgba(165, 180, 252, 0.2);
+border-radius: 50%;
+transform: translate(-50%, -50%) rotate(-15deg);
+box-shadow: 0 0 20px rgba(165, 180, 252, 0.1);
+}
+
+@keyframes rotatePlanet {
+0% { transform: rotate(0deg); }
+100% { transform: rotate(360deg); }
+}
+
+button{
+transition:.3s;
+}
+
+button:hover{
+transform:translateY(-5px);
+}
+
+.navbar{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+z-index:999;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(0,0,0,.45);
+backdrop-filter:blur(15px);
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-size:38px;
+font-weight:700;
+}
+
+.logo img{
+width:70px;
+}
+
+.nav-links{
+display:flex;
+list-style:none;
+gap:30px;
+}
+
+.nav-links a{
+color:white;
+text-decoration:none;
+font-weight:600;
+}
+
+.nav-links a:hover{
+color:#dfff4f;
+}
+
+.buy-btn,.primary-btn,.secondary-btn,.play-btn,.copy-btn,.float-buy{
+border:none;
+border-radius:50px;
+font-weight:700;
+cursor:pointer;
+box-shadow:0 5px 0 #000;
+}
+
+.buy-btn{
+padding:14px 26px;
+background:#dfff4f;
+}
+
+.section{
+min-height:100vh;
+padding:140px 80px 80px;
+background: transparent;
+}
+
+#home{
+position:relative;
+display: flex;
+align-items: center;
+}
+
+/* STRUKTUR LAYOUT HALAMAN DEPAN LEBIH RAPIH & SEJAJAR */
+.home-content{
+position:relative;
+z-index:2;
+display:grid;
+grid-template-columns: 1fr 500px;
+align-items:center;
+gap:40px;
+width: 100%;
+}
+
+.home-left{
+display: flex;
+justify-content: center;
+align-items: center;
+}
+
+.home-left img{
+width:100%;
+max-width:450px;
+animation:float 3s infinite ease-in-out;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-20px);}
+}
+
+.home-right{
+display: flex;
+flex-direction: column;
+justify-content: center;
+}
+
+.home-right h1{
+font-size:100px;
+-webkit-text-stroke:4px black;
+text-shadow:6px 6px 0 black;
+line-height: 1;
+}
+
+.home-right p{
+font-size:28px;
+margin:15px 0 25px;
+font-weight: 500;
+color: #dfff4f;
+}
+
+.button-group{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.primary-btn,.secondary-btn{
+padding:18px 35px;
+font-size:22px;
+}
+
+.primary-btn{
+background:#111;
+color:white;
+}
+
+.secondary-btn{
+background:white;
+color:black;
+border:3px solid black;
+}
+
+.contract-box{
+margin-top:25px;
+background:white;
+color:black;
+padding:15px 20px;
+border-radius:50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+max-width: 650px;
+}
+
+.copy-btn{
+padding:10px 18px;
+background:#dfff4f;
+}
+
+/* MODIFIKASI BOTTOM TEXT - PUTIH CERAH UNIK & GLOWING */
+.bottom-text{
+grid-column: 1 / -1;
+margin-top: 45px;
+font-size:38px;
+font-weight: 600;
+color: #ffffff;
+-webkit-text-stroke: 0px transparent;
+text-shadow: 0 0 10px rgba(255, 255, 255, 0.6), 0 0 20px rgba(223, 255, 79, 0.2);
+line-height: 1.3;
+border-top: 2px dashed rgba(255, 255, 255, 0.2);
+padding-top: 25px;
+letter-spacing: 0.5px;
+}
+
+.section-title{
+text-align:center;
+font-size:75px;
+margin-bottom:30px;
+-webkit-text-stroke:4px black;
+text-shadow:4px 4px 0 black;
+}
+
+.section-text{
+max-width:900px;
+margin:auto;
+text-align:center;
+font-size:26px;
+}
+
+#meme, #games, #chart, #roadmap, #community, #contact, #marketcap {
+background: rgba(11, 13, 25, 0.4); 
+backdrop-filter: blur(2px);
+}
+
+.meme-card video{
+width:100%;
+height:auto;
+max-height:500px;
+object-fit:contain;
+border-radius:20px;
+display:block;
+background:black;
+}
+
+.meme-card video:hover{
+transform:scale(1.03);
+transition:.3s;
+}
+
+.meme-gallery,.games-container,.roadmap-container{
+max-width:1300px;
+margin:auto;
+display:grid;
+gap:25px;
+margin-top:50px;
+}
+
+.meme-gallery{
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.games-container{
+grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+}
+
+.roadmap-container{
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+
+.meme-card,.game-card,.roadmap-card,.community-card{
+background:rgba(255,255,255,.08);
+padding:20px;
+border-radius:25px;
+backdrop-filter:blur(10px);
+}
+
+.meme-card img,.chart-box img{
+width:100%;
+border-radius:20px;
+}
+
+.meme-card img{
+height:300px;
+object-fit:cover;
+}
+
+.chart-box{
+max-width:1000px;
+margin:auto;
+background:black;
+padding:20px;
+border-radius:25px;
+}
+
+.chart-video{
+display:flex;
+justify-content:center;
+margin-top:25px;
+}
+
+.chart-video video{
+width:260px;
+max-width:100%;
+height:auto;
+background:transparent;
+display:block;
+}
+
+.chart-wrap{
+position:relative;
+overflow:hidden;
+}
+
+.chart-overlay-video{
+position:absolute;
+bottom:50px; 
+right:50px; 
+width:400px; 
+height:auto;
+background:transparent;
+pointer-events:none;
+z-index:5;
+}
+
+.game-frame{
+width:100%;
+height:420px;
+border:none;
+border-radius:20px;
+background:black;
+}
+.game-thumb{
+width:100%;
+height:320px;
+object-fit:cover;
+border-radius:20px;
+background:black;
+cursor:pointer;
+transition:.3s;
+}
+
+.game-thumb:hover{
+transform:scale(1.03);
+}
+
+.play-btn{
+width:100%;
+margin-top:15px;
+padding:15px;
+background:#dfff4f;
+}
+
+.community-box{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-top:40px;
+}
+
+.community-card{
+width:250px;
+text-align:center;
+font-size:28px;
+cursor:pointer;
+transition: .3s;
+}
+
+.community-card:hover{
+transform: translateY(-5px);
+background: #dfff4f;
+color: black;
+}
+
+.float-buy{
+position:fixed;
+right:25px;
+bottom:25px;
+padding:18px 28px;
+background:#dfff4f;
+font-size:22px;
+z-index:999;
+}
+
+#speakerBtn{
+position:fixed;
+left:25px;
+bottom:25px;
+width:65px;
+height:65px;
+background:#dfff4f;
+border-radius:50%;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:30px;
+cursor:pointer;
+z-index:9999;
+box-shadow:0 5px 0 #000;
+}
+
+/* ===================================================
+   CSS UNTUK GRID MARKET KARTU TRADES SESUAI GAMBAR 
+   =================================================== */
+.trade-wrapper {
+max-width: 1300px;
+margin: 40px auto 0;
+padding: 0 20px;
+}
+
+.market-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+}
+
+.market-card {
+background: #121318; /* Warna gelap solid premium seperti di gambar */
+border: 1px solid #22252a;
+border-radius: 20px;
+padding: 24px;
+text-align: left;
+cursor: pointer;
+position: relative;
+transition: transform 0.3s, border-color 0.3s;
+font-family: sans-serif; /* Font bergaya clean crypto dash */
+}
+
+.market-card:hover {
+transform: translateY(-5px);
+border-color: #dfff4f;
+}
+
+.market-header {
+display: flex;
+align-items: center;
+gap: 14px;
+margin-bottom: 24px;
+position: relative;
+}
+
+.market-logo {
+width: 44px;
+height: 44px;
+object-fit: contain;
+}
+
+.market-name-info {
+display: flex;
+flex-direction: column;
+}
+
+.market-title {
+font-size: 20px;
+font-weight: 700;
+letter-spacing: 0.5px;
+color: #ffffff;
+text-transform: uppercase;
+}
+
+.market-type {
+font-size: 11px;
+font-weight: 600;
+color: #848e9c;
+letter-spacing: 1px;
+margin-top: 2px;
+}
+
+/* Label ungu khusus DEX */
+.market-type.dex-purple {
+color: #b183ff;
+}
+
+.arrow-icon {
+position: absolute;
+top: 0;
+right: 0;
+width: 32px;
+height: 32px;
+border: 1px solid #22252a;
+border-radius: 50%;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #181a20;
+}
+
+.arrow-icon svg {
+width: 14px;
+height: 14px;
+fill: #848e9c;
+}
+
+.market-row {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 10px 0;
+border-bottom: 1px solid #1e2229;
+font-size: 14px;
+}
+
+.market-row:last-child {
+border-bottom: none;
+padding-bottom: 0;
+}
+
+.market-label {
+color: #848e9c;
+font-weight: 500;
+}
+
+.market-value {
+color: #ffffff;
+font-weight: 600;
+}
+
+.market-price {
+color: #ffffff;
+font-weight: 700;
+font-size: 16px;
+}
+
+@media(max-width:900px){
+.navbar{
+flex-direction:column;
+padding:20px;
+}
+.nav-links{
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+}
+.home-content{
+display: flex;
+flex-direction:column;
+text-align:center;
+}
+.home-right{
+align-items: center;
+}
+.home-right h1{
+font-size:65px;
+}
+.section-title{
+font-size:48px;
+}
+.games-container{
+grid-template-columns:1fr;
+}
+.game-frame{
+height:280px;
+}
+.section{
+padding:180px 20px 80px;
+}
+.bottom-text{
+font-size: 24px;
+}
+.bg-planet {
+width: 200px;
+height: 200px;
+right: -50px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="space-bg"></canvas>
+<div class="bg-planet"></div>
+
+<nav class="navbar">
+<div class="logo">
+<img src="alien-logo.png">
+RealFinOfficial
+</div>
+
+<ul class="nav-links">
+<li><a href="#home">HOME</a></li>
+<li><a href="#meme">VIDEO</a></li>
+<li><a href="#chart">CHART</a></li>
+<li><a href="#games">GAMES</a></li>
+<li><a href="#marketcap">MARKETCAP</a></li>
+<li><a href="#community">COMMUNITY</a></li>
+<li><a href="#contact">TRADES</a></li>
+</ul>
+
+<button class="buy-btn" onclick="openDex()">BUY NOW</button>
+</nav>
+
+<section id="home" class="section">
+<div class="home-content">
+
+<div class="home-right">
+<h1>R.E.A.L</h1>
+<p>WIENER PRIVATBANK</p>
+
+<div class="button-group">
+<button class="primary-btn" onclick="window.open('https://www.mexc.com/exchange/ASSET_USDT()', '_blank')">BUY $ASSET</button>
+<button class="secondary-btn" onclick="goGames()">JOIN ASSET</button>
+</div>
+
+<div class="contract-box">
+<span>CA: 0x99E980265Bf36516C442be982df1772a6cCb3233</span>
+<button class="copy-btn" onclick="copyCA()">COPY</button>
+</div>
+</div>
+
+<div class="home-left">
+<img src="alien-hero.png">
+</div>
+
+<div class="bottom-text">
+The first fully decentralised and permissionless L1 Blockchain.<br>that offers native tokenisation of Real-World Assets (RWA).
+</div>
+
+</div>
+</section>
+
+<section id="meme" class="section">
+    <div style="display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-bottom: 40px;">
+        <div class="meme-card">
+            <video controls autoplay muted loop>
+            <source src="ASSET.MP4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="meme-card">
+            <video controls autoplay muted loop>
+            <source src="trump-dance.mp4" type="video/mp4">
+            </video>
+        </div>
+    </div>
+<h1 class="section-title">REAL NEWS</h1>
+<div class="section-text">REAL NEWS COLLECTION.</div>
+
+<div class="meme-gallery">
+<div class="meme-card"><img src="meme1.png"></div>
+<div class="meme-card"><img src="meme2.png"></div>
+<div class="meme-card"><img src="meme3.png"></div>
+<div class="meme-card"><img src="meme4.png"></div>
+<div class="meme-card"><img src="meme5.png"></div>
+<div class="meme-card"><img src="meme6.png"></div>
+</div>
+</section>
+
+<section id="chart" class="section">
+<h1 class="section-title">CHART</h1>
+
+<div class="chart-box chart-wrap">
+    <img src="chart.png">
+
+    <video class="chart-overlay-video" autoplay muted loop playsinline>
+        <source src="alien-trump.webm" type="video/webm">
+    </video>
+</div>
+</section>
+
+<section id="games" class="section">
+<h1 class="section-title">UNITY GAMES</h1>
+<div class="section-text">Play REAL games</div>
+
+<div class="games-container">
+<div class="game-card">
+    <h2>Alien Attack</h2>
+    <img src="game1-thumb.jpg" class="game-thumb" onclick="window.open('https://hermsan.itch.io/realfi-game', '_blank')">
+    <button class="play-btn" onclick="window.open('https://hermsan.itch.io/realfi-game', '_blank')">PLAY</button>
+</div>
+
+<div class="game-card">
+    <h2>UFO Battle</h2>
+    <img src="game2-thumb.jpg" class="game-thumb" onclick="openGamePage('game2/index.html')">
+    <button class="play-btn" onclick="openGamePage('game2/index.html')">PLAY</button>
+</div>
+</div>
+</section>
+
+<section id="marketcap" class="section">
+<h1 class="section-title">MARKETCAP</h1>
+<div class="chart-box">
+<img src="marketcap.png">
+</div>
+</section>
+
+<section id="community" class="section">
+<h1 class="section-title">COMMUNITY</h1>
+<div class="community-box">
+<div class="community-card" onclick="openTwitter()">🐦 Twitter</div>
+<div class="community-card" onclick="openTelegram()">💬 Telegram</div>
+<div class="community-card" onclick="openDiscord()">🎮 Discord</div>
+<div class="community-card" onclick="openLinkedin()">💼 LinkedIn</div>
+<div class="community-card" onclick="openMedium()">📝 Medium</div>
+<div class="community-card" onclick="openGitbook()">📖 GitBook</div>
+<div class="community-card" onclick="openInstagram()">📷 Instagram</div>
+</div>
+</section>
+
+<section id="contact" class="section">
+<h1 class="section-title">TRADES REAL ON</h1>
+
+<div class="trade-wrapper">
+    <div class="market-grid">
+        
+        <div class="market-card" onclick="openKraken()">
+            <div class="market-header">
+                <img src="https://s2.coinmarketcap.com/static/img/exchanges/64x64/24.png" class="market-logo" alt="Kraken">
+                <div class="market-name-info">
+                    <span class="market-title">Kraken</span>
+                    <span class="market-type">CEX</span>
+                </div>
+                <div class="arrow-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 5h5v2H7.41L17 16.59V14h2v5h-5v-2h2.59L5 7.41V5z"/></svg>
+                </div>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Pair</span>
+                <span class="market-value">ASSET/USD</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Price</span>
+                <span class="market-price">$0.177</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">24h Vol</span>
+                <span class="market-value">$4.8K</span>
+            </div>
+        </div>
+
+        <div class="market-card" onclick="openKucoin()">
+            <div class="market-header">
+                <img src="https://s2.coinmarketcap.com/static/img/exchanges/64x64/311.png" class="market-logo" alt="Kucoin">
+                <div class="market-name-info">
+                    <span class="market-title">KuCoin</span>
+                    <span class="market-type">CEX</span>
+                </div>
+                <div class="arrow-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 5h5v2H7.41L17 16.59V14h2v5h-5v-2h2.59L5 7.41V5z"/></svg>
+                </div>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Pair</span>
+                <span class="market-value">ASSET/USDT</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Price</span>
+                <span class="market-price">$0.175</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">24h Vol</span>
+                <span class="market-value">$623.1K</span>
+            </div>
+        </div>
+
+        <div class="market-card" onclick="openMexc()">
+            <div class="market-header">
+                <img src="https://s2.coinmarketcap.com/static/img/exchanges/64x64/544.png" class="market-logo" alt="MEXC">
+                <div class="market-name-info">
+                    <span class="market-title">MEXC</span>
+                    <span class="market-type">CEX</span>
+                </div>
+                <div class="arrow-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 5h5v2H7.41L17 16.59V14h2v5h-5v-2h2.59L5 7.41V5z"/></svg>
+                </div>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Pair</span>
+                <span class="market-value">ASSET/USDT</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Price</span>
+                <span class="market-price">$0.177</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">24h Vol</span>
+                <span class="market-value">$407.1K</span>
+            </div>
+        </div>
+
+        <div class="market-card" onclick="openUniswap()">
+            <div class="market-header">
+                <img src="https://s2.coinmarketcap.com/static/img/exchanges/64x64/1348.png" class="market-logo" alt="Uniswap">
+                <div class="market-name-info">
+                    <span class="market-title">Uniswap</span>
+                    <span class="market-type dex-purple">DEX · V3 · ETHEREUM</span>
+                </div>
+                <div class="arrow-icon">
+                    <svg viewBox="0 0 24 24"><path d="M5 5h5v2H7.41L17 16.59V14h2v5h-5v-2h2.59L5 7.41V5z"/></svg>
+                </div>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Pair</span>
+                <span class="market-value">$ASSET/USDC</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">Price</span>
+                <span class="market-price">$0.177</span>
+            </div>
+            <div class="market-row">
+                <span class="market-label">24h Vol</span>
+                <span class="market-value">$7.2K</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="speakerBtn" onclick="toggleMusic()">🔊</div>
+
+<script>
+const canvas = document.getElementById('space-bg');
+const ctx = canvas.getContext('2d');
+
+let stars = [];
+let coins = [];
+const starCount = 150;
+const coinCount = 25;
+
+const cryptoSources = [
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/1.png',     // Bitcoin (BTC)
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/1027.png',  // Ethereum (ETH)
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/1839.png',  // BNB (Binance)
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png',  // Solana (SOL)
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/74.png',    // Dogecoin (DOGE)
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/52.png',    // XRP
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/2010.png',  // Cardano (ADA)
+    'https://s2.coinmarketcap.com/static/img/coins/64x64/5994.png'   // Shiba Inu (SHIB)
+];
+
+const coinImages = cryptoSources.map(src => {
+    const img = new Image();
+    img.src = src;
+    return img;
+});
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+for (let i = 0; i < starCount; i++) {
+    stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 2,
+        twinkleSpeed: 0.01 + Math.random() * 0.03,
+        opacity: Math.random()
+    });
+}
+
+for (let i = 0; i < coinCount; i++) {
+    const randomImgIndex = Math.floor(Math.random() * coinImages.length);
+    coins.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: 30 + Math.random() * 25,
+        speedY: 0.8 + Math.random() * 1.8,
+        speedX: (Math.random() - 0.5) * 0.4,
+        rotation: Math.random() * Math.PI * 2,
+        rotSpeed: 0.01 + Math.random() * 0.02,
+        img: coinImages[randomImgIndex]
+    });
+}
+
+function animateSpace() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#ffffff';
+    stars.forEach(star => {
+        star.opacity += star.twinkleSpeed;
+        if (star.opacity > 1 || star.opacity < 0) {
+            star.twinkleSpeed = -star.twinkleSpeed;
+        }
+        ctx.globalAlpha = Math.max(0.1, star.opacity);
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+    });
+
+    coins.forEach(coin => {
+        coin.y += coin.speedY;
+        coin.x += coin.speedX;
+        coin.rotation += coin.rotSpeed;
+
+        if (coin.y > canvas.height + 60) {
+            coin.y = -60;
+            coin.x = Math.random() * canvas.width;
+            coin.speedY = 0.8 + Math.random() * 1.8;
+            coin.img = coinImages[Math.floor(Math.random() * coinImages.length)];
+        }
+
+        if (coin.x < -50 || coin.x > canvas.width + 50) {
+            coin.speedX = -coin.speedX;
+        }
+
+        ctx.save();
+        ctx.translate(coin.x, coin.y);
+        ctx.rotate(coin.rotation);
+        ctx.globalAlpha = 0.8; 
+
+        if (coin.img.complete && coin.img.naturalWidth !== 0) {
+            ctx.drawImage(coin.img, -coin.size/2, -coin.size/2, coin.size, coin.size);
+        } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, coin.size/2, 0, Math.PI * 2);
+            ctx.fillStyle = '#f3ba2f';
+            ctx.fill();
+        }
+        ctx.restore();
+    });
+
+    ctx.globalAlpha = 1.0; 
+    requestAnimationFrame(animateSpace);
+}
+
+window.addEventListener('load', () => {
+    animateSpace();
+});
+
+function copyCA(){
+navigator.clipboard.writeText("Hon2rHAiqkcDtUzL5gA2vjXPr7T1MPCK2UT2AHKCpump");
+alert("Contract copied");
+}
+function openGamePage(url){ window.location.href = url; }
+function openDex(){ window.open("https://www.mexc.com/exchange/ASSET_USDT","_blank"); }
+function openTwitter(){ window.open("https://x.com/RealFinOfficial","_blank"); }
+function openTelegram(){ window.open("https://t.me/RealFinanceRWA","_blank"); }
+function openInstagram(){ window.open("https://www.instagram.com/real.finance.rwa_","_blank"); }
+
+function openDiscord(){ window.open("https://discord.com/invite/Ja4zRWsv5N", "_blank"); }
+if (typeof openLinkedin !== "function") { function openLinkedin(){ window.open("https://www.linkedin.com/company/realfinancerwa", "_blank"); } }
+function openMedium(){ window.open("https://medium.com/@RealFinOfficial", "_blank"); }
+function openGitbook(){ window.open("https://gitbook.real.finance/docs/", "_blank"); }
+
+// Fungsi Tautan Bursa Baru
+function openKraken() { window.open("https://pro.kraken.com/app/trade/asset-usd", "_blank"); }
+function openKucoin() { window.open("https://www.kucoin.com/trade/ASSET-USDT", "_blank"); }
+function openMexc() { window.open("https://www.mexc.com/exchange/ASSET_USDT", "_blank"); }
+function openUniswap() { window.open("https://app.uniswap.org/swap?chain=mainnet&inputCurrency=0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48&outputCurrency=0x99e980265bf36516c442be982df1772a6ccb3233", "_blank"); }
+
+const music=document.getElementById("bgMusic");
+const speaker=document.getElementById("speakerBtn");
+let playing=false;
+
+function toggleMusic(){
+if(playing){
+music.pause();
+speaker.innerHTML="🔇";
+playing=false;
+}else{
+music.play();
+speaker.innerHTML="🔊";
+playing=true;
+}
+}
+function openMail(){ window.location.href="mailto:yourmail@gmail.com"; }
+function openDextools(){ window.open("https://www.dextools.io","_blank"); }
+function openPump(){ window.open("https://pump.fun","_blank"); }
+function openCMC(){ window.open("https://coinmarketcap.com","_blank"); }
+function goGames(){ document.getElementById("games").scrollIntoView({ behavior:"smooth" }); }
+</script>
+
+</body>
+</html>
